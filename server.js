@@ -2,11 +2,13 @@ var express = require("express");
 var app = express();
 var port = process.env.PORT || 3000;
 
-var Adjectives = function() {
-  this.useless = true;
-  this.stupid = true;
-  this.unnecessary = true;
-  this.repetitive = true;
+var Adjective = function() {
+  this.dopey = true;
+  this.sneezy = true;
+  this.happy = true;
+  this.grumpy = true;
+  this.sleepy = true;
+  this.bashful = true;
 };
 
 var adjective = new Adjective();
@@ -17,8 +19,10 @@ function getRandomWord(object) {
   return {word: randomProp};
 }
 
+app.use(express.static(__dirname + "/app/"));
+
 app.get("/", function(req, res) {
-  res.send("hello, universe!");
+  res.sendFile(index.html);
 });
 
 app.get("/adjective", function(req, res) {
