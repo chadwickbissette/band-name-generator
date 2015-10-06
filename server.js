@@ -11,7 +11,27 @@ var Adjective = function() {
   this.bashful = true;
 };
 
+var Verb = function() {
+  this.attempt = true;
+  this.sneeze = true;
+  this.help = true;
+  this.complain = true;
+  this.sleep = true;
+  this.blush = true;
+};
+
+var Noun = function() {
+  this.disadvantage = true;
+  this.allergy = true;
+  this.happiness = true;
+  this.attitude = true;
+  this.bed = true;
+  this.aversion = true;
+};
+
 var adjective = new Adjective();
+var verb = new Verb();
+var noun = new Noun();
 
 function getRandomWord(object) {
   var propArray = Object.keys(object);
@@ -27,6 +47,14 @@ app.get("/", function(req, res) {
 
 app.get("/adjective", function(req, res) {
   res.json(getRandomWord(adjective));
+});
+
+app.get("/verb", function(req, res) {
+  res.json(getRandomWord(verb));
+});
+
+app.get("/noun", function(req, res) {
+  res.json(getRandomWord(noun));
 });
 
 app.listen(port, function(){
