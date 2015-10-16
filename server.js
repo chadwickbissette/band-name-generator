@@ -1,7 +1,13 @@
-var express = require("express");
+'use strict';
+
+var express = require('express');
 var app = express();
 var bodyparser = require('body-parser');
 var port = process.env.PORT || 3000;
+
+app.listen(port, function() {
+  console.log('server started on port ' + port);
+});
 
 // One module per Constructor
 
@@ -20,22 +26,21 @@ var adjective = new Adjective();
 var verb = new Verb();
 var noun = new Noun();
 
-app.use(express.static(__dirname + "/app/"));
+app.use(express.static(__dirname + '/app/'));
 
-
-app.get("/", function(req, res) {
-  res.sendFile(index.html);
+app.get('/', function(req, res) {
+  res.sendFile('index.html');
 });
 
-app.get("/adjective", function(req, res) {
+app.get('/adjective', function(req, res) {
   res.json(getRandomWord(adjective));
 });
 
-app.get("/verb", function(req, res) {
+app.get('/verb', function(req, res) {
   res.json(getRandomWord(verb));
 });
 
-app.get("/noun", function(req, res) {
+app.get('/noun', function(req, res) {
   res.json(getRandomWord(noun));
 });
 
@@ -44,19 +49,12 @@ app.post('/adjective', function(req, res) {
   res.json(word);
 });
 
-app.post('/noun', function(req, res){
+app.post('/noun', function(req, res) {
   var word = postWord(req.body.word, noun);
   res.json(word);
 });
 
 app.post('/verb', function(req, res) {
-  var word = postWord(req.body.word, verb)
+  var word = postWord(req.body.word, verb);
   res.json(word);
 });
-
-app.listen(port, function(){
-  console.log('server started on port ' + port);
-});
-
-
-
