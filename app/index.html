@@ -8,12 +8,28 @@
   </head>
 
   <body>
-    <button id="name">New Name</button>
-    <p>Chadwick:
+    <button id="name">New Random Words</button>
+    <p>From Chadwick's Collection of Words:
       <span id="adjective"></span>
       <span id="verb"></span>
       <span id="noun"></span>
     </p>
+
+    <h3>Submit Word(s)!</h3>
+    <form id="submitWords">
+      <label>Adjective: </label>
+      <input type="text" name="adjective">
+      <label>Noun: </label>
+      <input type="text" name="noun">
+      <label>Verb: </label>
+      <input type="text" name="verb">
+      <input type="submit" value="Submit Words"/>
+    </form>
+
+    <p id='adjectiveRes'></p>
+    <p id='verbRes'></p>
+    <p id='nounRes'></p>
+
   <script src= "script.js"></script>
   </body>
 </html>
